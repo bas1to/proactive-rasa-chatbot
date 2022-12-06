@@ -1,0 +1,52 @@
+version: "3.1"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: sad path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: affirm
+  - action: utter_happy
+
+- story: sad path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_unhappy
+  - action: utter_cheer_up
+  - action: utter_did_that_help
+  - intent: deny
+  - action: utter_goodbye
+
+- story: ask name
+  steps:
+  - intent: ask_name
+  - action: utter_name
+  - intent: tell_name
+    entities:
+    - name: Anna
+  - slot_was_set:
+    - name: Anna
+  - action: utter_say_name
+
+- story: ask my name
+  steps:
+  - intent: ask_my_name
+  - action: action_say_name
+  - intent: tell_name
+    entities:
+    - name: Anna
+  - slot_was_set:
+    - name: Anna
+  - action: action_say_name
