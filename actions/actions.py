@@ -31,7 +31,7 @@ class ActionSayName(Action):
   def name(self) -> Text:
     return "action_say_name"
 
-  def run(slef, dispatcher: CollectingDispatcher,
+  def run(self, dispatcher: CollectingDispatcher,
           tracker: Tracker,
           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
     name = tracker.get_slot("name")
@@ -40,3 +40,18 @@ class ActionSayName(Action):
     else:
       dispatcher.utter_message(text=f"Your name is {name}.")
     return []
+
+class ActionPracticeSOP(Action):
+
+  def name(self) -> Text:
+    return "action_check_reaction"
+
+  def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    name = tracker.get_slot("reaction")
+    if not name:
+      dispatcher.utter_message(text="You forgot to check if the person is showing no reaction and has no normal breathing.")
+    else:
+      dispatcher.utter_message(text="What do you do now?")
+    return[]

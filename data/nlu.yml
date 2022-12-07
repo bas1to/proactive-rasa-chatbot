@@ -16,6 +16,9 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
+
+- intent: start
+  examples: |
     - start
 
 - intent: goodbye
@@ -39,6 +42,8 @@ nlu:
     - of course
     - that sounds good
     - correct
+    - Ok, let's do it!
+    - Yes, sounds good.
 
 - intent: deny
   examples: |
@@ -49,6 +54,7 @@ nlu:
     - don't like that
     - no way
     - not really
+    - No, not today.
 
 - intent: mood_great
   examples: |
@@ -107,4 +113,35 @@ nlu:
   examples: |
     - do you know my name?
     - what is my name?
+
+- intent: start_practice
+  examples: |
+    - i want to practice an SOP
+    - start practice SOP
+
+- intent: als_no_reaction
+  examples: |
+    - The person shows [no reaction](reaction) and has no normal breathing.
+    - [no reaction](reaction) and no normal breathing
+
+- intent: start_cpr
+  examples: |
+    - start giving cpr
+    - give cpr
+    - I start giving CPR. I give chest compressions with ventilation at a ratio of 30:2.
+
+- intent: enhanced_measures
+  examples: |
+    - Establish enhanced measures. Establish access for medication. Advanced ventilation measures.
+    - enhanced measures, medication and ventilation
+
+- intent: ecg_diagnostics
+  examples: |
+    - Oh right. Next is emergency ECG diagnostics, medication administration, and shock administration if necessary. 
+    - emergancy ecg diagnostics
+
+- intent: medication
+  examples: |
+    - Yes, 1 mg epinephrine in a 10 ml syringe containing 1 mg epinephrine and 0.9 ml NaCl.
+    - 1 mg epinephrine
 

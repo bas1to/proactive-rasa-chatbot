@@ -11,9 +11,17 @@ intents:
   - ask_name
   - tell_name
   - ask_my_name
+  - start_practice
+  - als_no_reaction
+  - start_cpr
+  - enhanced_measures
+  - ecg_diagnostics
+  - medication
+  - start
 
 entities:
   - name
+  - reaction
 
 slots:
   name:
@@ -22,6 +30,12 @@ slots:
     mappings:
     - type: from_entity
       entity: name
+  reaction:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: reaction
 
 responses:
   utter_greet:
@@ -49,8 +63,42 @@ responses:
   utter_say_name:
   - text: "Your name is {name}."
 
+  utter_greet_sop:
+  - text: "Hi {name}! How are you? I noticed that you haven't practiced SOP in a while. How about revisiting one?"
+
+  utter_lookup_sop:
+  - text: "Let me see which one you should practice again."
+
+  utter_recommend_sop:
+  - text: "How about practicing Advanced Life Support?"
+
+  utter_start_practice:
+  - text: "I am glad to hear that! Please explain the proess of Advanced Life Support step by step."
+
+  utter_correct:
+  - text: "That's correct. Please go on."
+
+  utter_electrodes:
+  - text: "Quite well, but you forgot to place and connect the defibrillation electrodes."
+
+  utter_ask_medication:
+  - text: "That's correct. Do you remember the medication dosage?"
+
+  utter_correct_medication:
+  - text: "That's right, and remember to rinse with at least 20 mL NaCl 0.9% and elevate the extremity when administering peripherally."
+
+  utter_learning_recap:
+  - text: "You have clearly improved in Advanced Life Support compared to last time! Very well done!"
+
+  utter_ask_practice_more:
+  - text: "Do you want to practice something else?"
+
+  utter_motivating_goodbye:
+  - text: "Ok. Great progress, see you soon!"
+
 actions:
 - action_say_name
+- action_check_reaction
 
 session_config:
   session_expiration_time: 60

@@ -50,3 +50,38 @@ stories:
   - slot_was_set:
     - name: Anna
   - action: action_say_name
+
+- story: practice sop
+  steps:
+  - intent: start
+  - action: utter_greet_sop
+  - intent: affirm
+  - action: utter_lookup_sop
+  - action: utter_recommend_sop
+  - intent: affirm
+  - action: utter_start_practice
+  - intent: als_no_reaction
+    entities:
+    - reaction: no reaction
+  - slot_was_set:
+    - reaction: no reaction
+  - action: action_check_reaction
+  - intent: start_cpr
+  - action: utter_correct
+  - intent: enhanced_measures
+  - action: utter_electrodes
+  - intent: ecg_diagnostics
+  - action: utter_ask_medication
+  - intent: medication
+  - action: utter_correct_medication
+  - action: utter_learning_recap
+  - action: utter_ask_practice_more
+  - intent: deny
+  - action: utter_motivating_goodbye
+
+- story: practice wrong sop
+  steps:
+  - intent: start_practice
+  - action: utter_start_practice
+  - intent: start_cpr
+  - action: action_check_reaction
