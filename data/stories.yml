@@ -67,13 +67,47 @@ stories:
     - reaction: no reaction
   - action: action_check_reaction
   - intent: start_cpr
-  - action: utter_correct
+    entities:
+    - cpr: giving cpr
+  - slot_was_set:
+    - cpr: giving cpr
+  - action: action_check_cpr
   - intent: enhanced_measures
-  - action: utter_electrodes
+    entities:
+    - measures: enhanced measures
+    - medication_access: access for medication
+    - advanced_ventilation: advanced ventilation
+    - defibrillation: defibrillation
+  - slot_was_set:
+    - measures: enhanced measures
+  - slot_was_set:
+    - medication_access: access for medication
+  - slot_was_set:
+    - advanced_ventilation: advanced ventilation
+  - slot_was_set:
+    - defibrillation: defibrillation
+  - action: action_check_measures
   - intent: ecg_diagnostics
-  - action: utter_ask_medication
+    entities:
+    - ecg: emergency ECG diagnostics
+    - medication_administration: medication administration
+    - shock: shock
+  - slot_was_set:
+    - ecg: emergency ECG diagnostics
+  - slot_was_set:
+    - medication_administration: medication administration
+  - slot_was_set:
+    - shock: shock
+  - action: action_check_ecg
   - intent: medication
-  - action: utter_correct_medication
+    entities:
+    - epinephrine: 1 mg epinephrine
+    - rinse: rinse
+  - slot_was_set:
+    - epinephrine: 1 mg epinephrine
+  - slot_was_set:
+    - rinse: rinse
+  - action: action_check_dosage
   - action: utter_learning_recap
   - action: utter_ask_practice_more
   - intent: deny
@@ -85,3 +119,118 @@ stories:
   - action: utter_start_practice
   - intent: start_cpr
   - action: action_check_reaction
+- story: interactive_story_1
+  steps:
+  - intent: start
+  - action: utter_greet_sop
+  - intent: affirm
+  - action: utter_lookup_sop
+  - action: utter_recommend_sop
+  - intent: affirm
+  - action: utter_start_practice
+  - intent: als_no_reaction
+    entities:
+    - reaction: no reaction
+  - slot_was_set:
+    - reaction: no reaction
+  - action: action_check_reaction
+  - intent: start_cpr
+    entities:
+    - cpr: giving cpr
+    - ventilation: ventilation
+  - slot_was_set:
+    - cpr: giving cpr
+  - action: action_check_cpr
+  - intent: enhanced_measures
+    entities:
+    - measures: enhanced measures
+    - medication_access: access for medication
+    - advanced_ventilation: advanced ventilation measures
+  - slot_was_set:
+    - measures: enhanced measures
+  - slot_was_set:
+    - medication_access: access for medication
+  - slot_was_set:
+    - advanced_ventilation: advanced ventilation measures
+  - action: action_check_measures
+  - intent: ecg_diagnostics
+    entities:
+    - ecg: emergency ecg diagnostics
+    - medication_administration: medication administration
+    - shock: shock administration
+  - slot_was_set:
+    - ecg: emergency ecg diagnostics
+  - slot_was_set:
+    - medication_administration: medication administration
+  - slot_was_set:
+    - shock: shock administration
+  - action: action_check_ecg
+  - intent: medication
+    entities:
+    - epinephrine: mg epinephrine
+    - epinephrine: mg epinephrine
+  - slot_was_set:
+    - epinephrine: mg epinephrine
+  - action: action_check_dosage
+  - action: utter_learning_recap
+  - action: utter_ask_practice_more
+  - intent: deny
+  - action: utter_motivating_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: start
+  - action: utter_greet_sop
+  - intent: affirm
+  - action: utter_lookup_sop
+  - action: utter_recommend_sop
+  - intent: affirm
+  - action: utter_start_practice
+  - intent: als_no_reaction
+    entities:
+    - reaction: no reaction
+  - slot_was_set:
+    - reaction: no reaction
+  - action: action_check_reaction
+  - intent: start_cpr
+    entities:
+    - cpr: giving cpr
+    - ventilation: ventilation
+  - slot_was_set:
+    - cpr: giving cpr
+  - action: action_check_cpr
+  - intent: enhanced_measures
+    entities:
+    - measures: enhanced measures
+    - medication_access: access for medication
+    - advanced_ventilation: advanced ventilation measures
+  - slot_was_set:
+    - measures: enhanced measures
+  - slot_was_set:
+    - medication_access: access for medication
+  - slot_was_set:
+    - advanced_ventilation: advanced ventilation measures
+  - action: action_check_measures
+  - intent: ecg_diagnostics
+    entities:
+    - ecg: emergency ECG diagnostics
+    - medication_administration: medication administration
+    - shock: shock administration
+  - slot_was_set:
+    - ecg: emergency ECG diagnostics
+  - slot_was_set:
+    - medication_administration: medication administration
+  - slot_was_set:
+    - shock: shock administration
+  - action: action_check_ecg
+  - intent: medication
+    entities:
+    - epinephrine: mg epinephrine
+    - epinephrine: mg epinephrine
+  - slot_was_set:
+    - epinephrine: mg epinephrine
+  - action: action_check_dosage
+  - action: utter_learning_recap
+  - action: utter_ask_practice_more
+  - intent: deny
+  - action: utter_motivating_goodbye

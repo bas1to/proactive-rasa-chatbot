@@ -41,7 +41,7 @@ class ActionSayName(Action):
       dispatcher.utter_message(text=f"Your name is {name}.")
     return []
 
-class ActionPracticeSOP(Action):
+class ActionCheckReaction(Action):
 
   def name(self) -> Text:
     return "action_check_reaction"
@@ -54,4 +54,96 @@ class ActionPracticeSOP(Action):
       dispatcher.utter_message(text="You forgot to check if the person is showing no reaction and has no normal breathing.")
     else:
       dispatcher.utter_message(text="What do you do now?")
+    return[]
+
+class ActionCheckCPR(Action):
+
+  def name(self) -> Text:
+    return "action_check_cpr"
+
+  def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    name = tracker.get_slot("cpr")
+    if not name:
+      dispatcher.utter_message(text="You forgot to start giving CPR with chest compression and ventilation in a ratio of 30:2.")
+    else:
+      dispatcher.utter_message(text="That's correct. Please go on.")
+    return[]
+
+class ActionCheckMeasures(Action):
+
+  def name(self) -> Text:
+    return "action_check_measures"
+
+  def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    name = tracker.get_slot("measures")
+    missing = False
+    if not name:
+      dispatcher.utter_message(text="You forgot to establish enhanced measures.")
+      missing = True
+    name = tracker.get_slot("medication_access")
+    if not name:
+      dispatcher.utter_message(text="You forgot to establish access for medication.")
+      missing = True
+    name = tracker.get_slot("advanced_ventilation")
+    if not name:
+      dispatcher.utter_message(text="You forgot to establish advanced ventilation measures.")
+      missing = True
+    name = tracker.get_slot("defibrillation")
+    if not name and not missing:
+      dispatcher.utter_message(text="Quite well, but you forgot to place and connect the defibrillation electrodes.")
+    elif not name:
+      dispatcher.utter_message(text="You forgot to place and connect the defibrillation electrodes.")
+    elif not missing:
+      dispatcher.utter_message(text="Good. Go on please.")
+    else:
+      dispatcher.utter_message(text="Go on please.")
+    return[]
+
+class ActionCheckECG(Action):
+
+  def name(self) -> Text:
+    return "action_check_ecg"
+
+  def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    missing = False
+    name = tracker.get_slot("ecg")
+    if not name:
+      dispatcher.utter_message(text="You forgot emergency ECG diagnostics.")
+      missing = True
+    name = tracker.get_slot("medication_administration")
+    if not name:
+      dispatcher.utter_message(text="You forgot to administrate medication.")
+      missing = True
+    name = tracker.get_slot("shock")
+    if not name:
+      dispatcher.utter_message(text="You forgot to administrate shock if necessary.")
+      missing = True
+    if missing:
+      dispatcher.utter_message(text="Do you remember the medication dosage?")
+    else:
+      dispatcher.utter_message(text="That's correct. Do you remember the medication dosage?")
+    return[]
+
+class ActionCheckDosage(Action):
+
+  def name(self) -> Text:
+    return "action_check_dosage"
+
+  def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    name = tracker.get_slot("epinephrine")
+    if not name:
+      dispatcher.utter_message(text="The correct dosage is 1 mg epinephrine.")
+    name = tracker.get_slot("rinse")
+    if not name:
+      dispatcher.utter_message(text="That's right, and remember to rinse with at least 20 mL NaCl 0.9% and elevate the extremity when administering peripherally.")
+    else:
+      dispatcher.utter_message(text="That's right.")
     return[]

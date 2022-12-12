@@ -1,5 +1,4 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
@@ -16,11 +15,10 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
 - intent: start
   examples: |
     - start
-
+    - start chatbot
 - intent: goodbye
   examples: |
     - cu
@@ -33,7 +31,6 @@ nlu:
     - see you around
     - bye bye
     - see you later
-
 - intent: affirm
   examples: |
     - yes
@@ -44,7 +41,9 @@ nlu:
     - correct
     - Ok, let's do it!
     - Yes, sounds good.
-
+    - ok lets do it
+    - yes sounds great
+    - yes sounds good
 - intent: deny
   examples: |
     - no
@@ -55,7 +54,8 @@ nlu:
     - no way
     - not really
     - No, not today.
-
+    - No
+    - no not today
 - intent: mood_great
   examples: |
     - perfect
@@ -72,7 +72,6 @@ nlu:
     - so so perfect
     - so good
     - so perfect
-
 - intent: mood_unhappy
   examples: |
     - my day was horrible
@@ -89,59 +88,76 @@ nlu:
     - extremly sad
     - so saad
     - so sad
-
 - intent: bot_challenge
   examples: |
     - are you a bot?
     - are you a human?
     - am I talking to a bot?
     - am I talking to a human?
-
 - intent: ask_name
   examples: |
     - what is your name?
     - who are you?
     - whats your name?
     - what's your name?
-
 - intent: tell_name
   examples: |
     - my name is [Anna](name)
     - I am [Anna](name)
-
+    - my name is [Bastian](name)
+    - I am [Bastian](name)
+    - I'm [Anna](name)
+    - I'm [Bastian](name)
+    - Im [Anna](name)
+    - Im [Bastian](name)
 - intent: ask_my_name
   examples: |
     - do you know my name?
     - what is my name?
-
 - intent: start_practice
   examples: |
     - i want to practice an SOP
     - start practice SOP
-
 - intent: als_no_reaction
   examples: |
     - The person shows [no reaction](reaction) and has no normal breathing.
     - [no reaction](reaction) and no normal breathing
-
+    - the persona shows [no reaction](reaction) and has no normal breathing
+    - the person shows [no reaction](reaction) and has no normal breathing
 - intent: start_cpr
   examples: |
-    - start giving cpr
-    - give cpr
-    - I start giving CPR. I give chest compressions with ventilation at a ratio of 30:2.
-
+    - start [giving cpr](cpr)
+    - [giving cpr](cpr)
+    - I start [giving CPR](cpr). I give chest compressions with [ventilation](ventilation) at a ratio of 30:2.
+    - [giving cpr](cpr) and [ventilation](ventilation)
+    - i start [giving cpr](cpr). i give chest compression with [ventilation](ventilation) at a ratio of 30:2
+    - i start [giving cpr](cpr). i give chest compression and [ventilation](ventilation)
 - intent: enhanced_measures
   examples: |
-    - Establish enhanced measures. Establish access for medication. Advanced ventilation measures.
-    - enhanced measures, medication and ventilation
-
+    - Establish [enhanced measures](measures). Establish [access for medication](medication_access). [Advanced ventilation measures](advanced_ventilation).
+    - [enhanced measures](measures), [medication](medication_access) and [ventilation](advanced_ventilation)
+    - Establish [enhanced measures](measures). Establish [access for medication](medication_access). [Advanced ventilation measures](advanced_ventilation). Place and connect [defibrillation](defibrillation) electrodes.
+    - [enhanced measures](measures), [access for medication](medication_access), [advanced ventilation measures](advanced_ventilation), [defibrillation](defibrillation) electrodes
+    - establish [enhanced measures](measures). establish [access for medication](medication_access). [advanced ventilation measures](advanced_ventilation).
+    - establish [enhanced measures](measures). establish [access for medication](medication_access). [advanced ventilation measures](advanced_ventilation).
 - intent: ecg_diagnostics
   examples: |
-    - Oh right. Next is emergency ECG diagnostics, medication administration, and shock administration if necessary. 
-    - emergancy ecg diagnostics
-
+    - Oh right. Next is [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock](shock) administration if necessary.
+    - [emergency ecg diagnostics](ecg), [medication administration](medication_administration), [shock](shock)
+    - oh right. next is [emergency ecg diagnostics](ecg), [medication administration](medication_administration), and [shock administration](shock) if necessary.
+    - oh right. next is [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock administration](shock) if necessary
 - intent: medication
   examples: |
-    - Yes, 1 mg epinephrine in a 10 ml syringe containing 1 mg epinephrine and 0.9 ml NaCl.
-    - 1 mg epinephrine
-
+    - Yes, [1 mg epinephrine](epinephrine) in a 10 ml syringe containing 1 mg epinephrine and 0.9 ml NaCl.
+    - [1 mg epinephrine](epinephrine)
+    - [1 mg epinephrine](epinephrine) and [rinse](rinse) with 20 mL NaCl 0.9%
+    - Yes, [1 mg epinephrine](epinephrine) in a 10 ml syringe containing 1 mg epinephrine and 0.9 ml NaCl. After that, [rinse](rinse) with at least 20 mL NaCl 0.9% and elevate the extremity when administering peripherally.
+    - yes, 1 [mg epinephrine](epinephrine) in a 10 ml syringe containing 1 [mg epinephrine](epinephrine) and 0.9 ml NaCl.
+    - yes, 1 [mg epinephrine](epinephrine) in a 10 ml syringe containing 1 [mg epinephrine](epinephrine) and 0.9 ml NaCl.
+- synonym: medication administration
+  examples: |
+    - give medication
+    - administrate medication
+- synonym: giving cpr
+  examples: |
+    - give cpr
