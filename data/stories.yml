@@ -234,3 +234,9 @@ stories:
   - action: utter_ask_practice_more
   - intent: deny
   - action: utter_motivating_goodbye
+
+
+- story: reset_all_slots
+  steps:
+  - intent: reset_slots
+  - action: action_reset_all_slots

@@ -11,6 +11,7 @@ from typing import Any, Text, Dict, List
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import AllSlotsReset
 
 
 # class ActionHelloWorld(Action):
@@ -42,19 +43,43 @@ class ActionSayName(Action):
     return []
 
 class ActionCheckReaction(Action):
-
   def name(self) -> Text:
     return "action_check_reaction"
 
   def run(self, dispatcher: CollectingDispatcher,
           tracker: Tracker,
           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    
+    response = tracker.latest_message['text']
+
+    entities = tracker.latest_message['entities']
+
+    slots = {}
+    for entity in entities:
+        slots[entity['entity']] = entity['value']
     name = tracker.get_slot("reaction")
     if not name:
       dispatcher.utter_message(text="You forgot to check if the person is showing no reaction and has no normal breathing.")
     else:
       dispatcher.utter_message(text="What do you do now?")
     return[]
+
+
+
+# class ActionCheckReaction(Action):
+
+#   def name(self) -> Text:
+#     return "action_check_reaction"
+
+#   def run(self, dispatcher: CollectingDispatcher,
+#           tracker: Tracker,
+#           domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#     name = tracker.get_slot("reaction")
+#     if not name:
+#       dispatcher.utter_message(text="You forgot to check if the person is showing no reaction and has no normal breathing.")
+#     else:
+#       dispatcher.utter_message(text="What do you do now?")
+#     return[]
 
 class ActionCheckCPR(Action):
 
@@ -147,3 +172,15 @@ class ActionCheckDosage(Action):
     else:
       dispatcher.utter_message(text="That's right.")
     return[]
+
+class ActionResetAllSlots(Action):
+
+  def name(self) -> Text:
+    return "action_reset_all_slots"
+
+  def run(self, dispatcher: CollectingDispatcher,
+          tracker: Tracker,
+          domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+    dispatcher.utter_message("All slots reset.")
+
+    return [AllSlotsReset()]

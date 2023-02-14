@@ -17,6 +17,7 @@ intents:
 - start_cpr
 - start_practice
 - tell_name
+- reset_slots
 entities:
 - medication_administration
 - advanced_ventilation
@@ -152,6 +153,7 @@ actions:
 - action_check_measures
 - action_check_reaction
 - action_say_name
+- action_reset_all_slots
 - utter_ask_practice_more
 - utter_greet_sop
 - utter_learning_recap

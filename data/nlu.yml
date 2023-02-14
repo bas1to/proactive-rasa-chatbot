@@ -161,3 +161,9 @@ nlu:
 - synonym: giving cpr
   examples: |
     - give cpr
+
+- intent: reset_slots
+  examples: |
+    - reset all slots
+    - reset slots
+    - reset all
