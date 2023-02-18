@@ -144,8 +144,12 @@ nlu:
   examples: |
     - Oh right. Next is [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock](shock) administration if necessary.
     - [emergency ecg diagnostics](ecg), [medication administration](medication_administration), [shock](shock)
-    - oh right. next is [emergency ecg diagnostics](ecg), [medication administration](medication_administration), and [shock administration](shock) if necessary.
-    - oh right. next is [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock administration](shock) if necessary
+    - oh right. next is [emergency ecg diagnostics](ecg), [medication administration](medication_administration), and [shock](shock) administration if necessary.
+    - oh right. next is [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock](shock) administration if necessary
+    - Give [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock](shock) administration if necessary
+    - Give [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock] administration(shock)
+    - Oh right. Next is [emergency ECG diagnostics](ecg), [medication administration](medication_administration), and [shock](shock) administration
+
 - intent: medication
   examples: |
     - Yes, [1 mg epinephrine](epinephrine) in a 10 ml syringe containing 1 mg epinephrine and 0.9 ml NaCl.
